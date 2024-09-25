@@ -1,0 +1,7 @@
+version: '3'
+
+tasks:
+  default:
+    desc: run command
+    cmds:
+      - go run main.go {{.t}} # task t=regex

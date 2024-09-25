@@ -15,6 +15,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jxskiss/base62 v1.1.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
+	github.com/mingrammer/commonregex v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/panjf2000/ants v1.3.0 // indirect
 	github.com/samber/lo v1.47.0 // indirect
