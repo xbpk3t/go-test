@@ -1,11 +1,19 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"github.com/gookit/goutil/dump"
 	"github.com/samber/lo"
 	"github.com/spf13/cobra"
+	"math/rand/v2"
+	"time"
 )
+
+type K struct {
+	Key string
+	Val string
+}
 
 // loCmd represents the lo command
 var loCmd = &cobra.Command{
@@ -18,13 +26,15 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("lo called")
-		ints := []int{1, 2, 3, 1, 2}
-		res := lo.FindUniques(ints)
-		dump.Println(res)
-
-		res = lo.Drop(ints, 2)
-		dump.Println(res)
+		// fmt.Println("lo called")
+		// ints := []int{1, 2, 3, 1, 2}
+		// dump.Println(lo.FindUniques(ints))
+		//
+		// dump.Println(lo.Drop(ints, 2))
+		//
+		// dump.Println(lo.Union([]int{0, 1, 2, 3, 4, 5}, []int{0, 2}, []int{0, 10}))
+		//
+		// dump.Println(lo.Uniq([]int{1, 2, 2, 1}))
 
 	},
 }
@@ -93,4 +103,19 @@ func (cr *ConfigRepos) FilterMD() ConfigRepos {
 		}
 	}
 	return filteredConfig
+}
+
+// 可以看到，lo的retry确实不如retry-go清晰，也不支持类似backoff之类的relay策略
+func retry() {
+	count1, time1, err1 := lo.AttemptWhileWithDelay(5, time.Second*5, func(i int, d time.Duration) (error, bool) {
+		randNum := rand.IntN(50)
+		fmt.Println(fmt.Sprintf("[%d], attempts num: %d", randNum, i+1))
+		if randNum == 3 {
+			return nil, false
+		}
+
+		return errors.New("invalid number"), true
+	})
+
+	dump.Println(count1, time1, err1)
 }
