@@ -54,6 +54,13 @@ func NowFormat() string {
 	return time.Now().Format("2006-01-02 15:04:05")
 }
 
+func GetToday() time.Time {
+	timeStr := time.Now().Format("2006-01-02")
+	t, _ := time.ParseInLocation("2006-01-02 15:04:05", timeStr+" 00:00:00", time.Local)
+	return t
+	// return time.Now().Round(24 * time.Hour).Truncate(24 * time.Hour)
+}
+
 // MsToTime 毫秒字符串转time.Time
 func MsToTime(ms string) (time.Time, error) {
 	msInt, err := strconv.ParseInt(ms, 10, 64)

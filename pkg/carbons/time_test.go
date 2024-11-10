@@ -1,6 +1,7 @@
 package carbons
 
 import (
+	"fmt"
 	"github.com/golang-module/carbon/v2"
 	"testing"
 	"time"
@@ -9,8 +10,26 @@ import (
 )
 
 func TestCarbon(t *testing.T) {
+
+	t.Run("carbon和time.Time 互相转换", func(t *testing.T) {
+		assert.Equal(t, carbon.Now().StdTime(), time.Now())
+		assert.Equal(t, carbon.CreateFromStdTime(time.Now()), carbon.Now())
+	})
+
 	t.Run("NowFormat()", func(t *testing.T) {
-		assert.Equal(t, NowFormat(), carbon.Now().String())
+		x := carbon.Now().String()
+		fmt.Println(x)
+		assert.Equal(t, NowFormat(), x)
+	})
+
+	t.Run("Compare", func(t *testing.T) {
+		carbon.Parse("2020-08-05 13:14:15").Gt(carbon.Parse("2020-08-04 13:14:15")) // true
+	})
+
+	t.Run("StartOfDay()", func(t *testing.T) {
+		x := carbon.Now().StartOfDay()
+		fmt.Println(x)
+		// assert.Equal(t, GetToday().String(), x.String())
 	})
 
 	// fmt.Println(TimeToStr(time.Now(), YYYY_MM))
