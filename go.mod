@@ -5,6 +5,7 @@ go 1.23
 toolchain go1.23.2
 
 require (
+	github.com/RoaringBitmap/roaring/v2 v2.4.0
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869
 	github.com/bytedance/sonic v1.12.3
 	github.com/daviddengcn/go-colortext v1.0.0
@@ -12,6 +13,8 @@ require (
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.22.1
+	github.com/go-resty/resty/v2 v2.16.2
+	github.com/golang-module/carbon/v2 v2.4.1
 	github.com/golang/mock v1.6.0
 	github.com/google/go-cmp v0.6.0
 	github.com/gookit/goutil v0.6.16
@@ -19,6 +22,7 @@ require (
 	github.com/jxskiss/base62 v1.1.0
 	github.com/mingrammer/commonregex v1.0.1
 	github.com/mitchellh/mapstructure v1.5.0
+	github.com/modood/table v0.0.0-20220527013332-8d47e76dad33
 	github.com/panjf2000/ants v1.3.0
 	github.com/resend/resend-go/v2 v2.12.0
 	github.com/samber/lo v1.47.0
@@ -27,12 +31,12 @@ require (
 	github.com/spf13/cobra v1.8.1
 	github.com/sqids/sqids-go v0.4.1
 	github.com/stretchr/testify v1.9.0
+	go.etcd.io/bbolt v1.3.11
 	gopkg.in/h2non/gock.v1 v1.1.2
 	mvdan.cc/xurls/v2 v2.5.0
 )
 
 require (
-	github.com/RoaringBitmap/roaring/v2 v2.4.0 // indirect
 	github.com/bits-and-blooms/bitset v1.14.3 // indirect
 	github.com/bytedance/sonic/loader v0.2.0 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
@@ -41,7 +45,6 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
-	github.com/golang-module/carbon/v2 v2.4.1 // indirect
 	github.com/gookit/color v1.5.4 // indirect
 	github.com/gookit/filter v1.2.1 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
@@ -65,10 +68,9 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
-	go.etcd.io/bbolt v1.3.11 // indirect
 	golang.org/x/arch v0.8.0 // indirect
 	golang.org/x/crypto v0.28.0 // indirect
-	golang.org/x/net v0.25.0 // indirect
+	golang.org/x/net v0.27.0 // indirect
 	golang.org/x/sys v0.26.0 // indirect
 	golang.org/x/text v0.19.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect

@@ -39,12 +39,13 @@ func (f UserForm) ConfigValidation(v *validate.Validation) {
 }
 
 // Messages 您可以自定义验证器错误消息
-func (f UserForm) Messages() map[string]string {
-	return validate.MS{
-		"required":      "oh! the {field} is required",
-		"Name.required": "message for special field",
-	}
-}
+// func (f UserForm) Messages() map[string]string {
+// 	return validate.MS{
+// 		"required":      "oh! the {field} is required",
+// 		"Name.required": "message for special field",
+// 		"minLen":        "{field} 的长度不能小于 {param}",
+// 	}
+// }
 
 // Translates 你可以自定义字段翻译
 func (f UserForm) Translates() map[string]string {

@@ -6,6 +6,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/gookit/validate"
+	"github.com/gookit/validate/locales/zhcn"
 	"test/pkg/validates"
 
 	"github.com/spf13/cobra"
@@ -18,11 +19,13 @@ var validateCmd = &cobra.Command{
 		u := &validates.UserForm{
 			Name: "inhere",
 		}
+		zhcn.RegisterGlobal()
 
 		// 创建 Validation 实例
-		v := validate.Struct(u)
+		// v := validate.Struct(u)
 		// 或者使用
-		// v := validate.New(u)
+		v := validate.New(u)
+		zhcn.Register(v)
 
 		if v.Validate() { // 验证成功
 			// do something ...
