@@ -69,9 +69,9 @@ func findCountry(countryCode string, flatppp []CountryPPP) *CountryPPP {
 func getDiscount(env, rangeValue string) Discount {
 	switch rangeValue {
 	case "0.0-0.1":
-		return Discount{Code: os.Getenv("level0_1"), Discount: parseInt(os.Getenv("level0_1_discount"), 0)}
+		return Discount{Code: os.Getenv("level0_1"), Discount: float64(parseInt(os.Getenv("level0_1_discount"), 0))}
 	case "0.1-0.2":
-		return Discount{Code: os.Getenv("level1_2"), Discount: parseInt(os.Getenv("level1_2_discount"), 0)}
+		return Discount{Code: os.Getenv("level1_2"), Discount: float64(parseInt(os.Getenv("level1_2_discount"), 0))}
 	// ... 其他case
 	default:
 		return Discount{Code: "", Discount: 0}
