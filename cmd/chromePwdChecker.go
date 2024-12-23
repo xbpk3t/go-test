@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"test/pkg/chromePwdChecker"
+	"test/services/chromePwdChecker"
 )
 
 // chromePwdCheckerCmd represents the chromePwdChecker command
