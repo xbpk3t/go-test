@@ -4,11 +4,9 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"errors"
 	"fmt"
 	"github.com/samber/lo"
 	"github.com/samber/mo"
-	"os"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -106,32 +104,32 @@ func UseFindValue() int {
 //	   }
 //	   return true, nil
 //	}
-func fileExists(path string) mo.IOEither[bool] {
-	return mo.NewIOEither1(func(path string) (bool, error) {
-		_, err := os.Stat(path)
-		if errors.Is(err, os.ErrNotExist) {
-			return false, nil
-		} else if err != nil {
-			return false, err
-		}
-		return true, nil
-	})
-}
+// func fileExists(path string) mo.IOEither[bool] {
+// 	return mo.NewIOEither1(func(path string) (bool, error) {
+// 		_, err := os.Stat(path)
+// 		if errors.Is(err, os.ErrNotExist) {
+// 			return false, nil
+// 		} else if err != nil {
+// 			return false, err
+// 		}
+// 		return true, nil
+// 	})
+// }
 
-func UseFileExists() {
-	io := fileExists("./io_either.go")
-	either := io.Run("./io_either.go")
-	either.Match(
-		func(err error) mo.Either[bool, error] {
-			fmt.Println("Error:", err)
-			return mo.Left[bool, error](false)
-		},
-		func(exist bool) mo.Either[bool, error] {
-			fmt.Println("File exists:", exist)
-			return mo.Right[bool, error](exist)
-		},
-	)
-}
+// func UseFileExists() {
+// 	io := fileExists("./io_either.go")
+// 	either := io.Run("./io_either.go")
+// 	either.Match(
+// 		func(err error) mo.Either[bool, error] {
+// 			fmt.Println("Error:", err)
+// 			return mo.Left[bool, error](false)
+// 		},
+// 		func(exist bool) mo.Either[bool, error] {
+// 			fmt.Println("File exists:", exist)
+// 			return mo.Right[bool, error](exist)
+// 		},
+// 	)
+// }
 
 //	func asyncOperation() (string, error) {
 //	   time.Sleep(2 * time.Second)

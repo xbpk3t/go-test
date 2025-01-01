@@ -5,11 +5,8 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/sourcegraph/conc"
-	"github.com/sourcegraph/conc/stream"
-	"time"
-
 	"github.com/spf13/cobra"
+	"test/pkg/concs"
 )
 
 // concCmd represents the conc command
@@ -37,69 +34,29 @@ to quickly create a Cobra application.`,
 		// 	})
 		// }
 
-		p()
+		// p()
+
+		// var wg conc.WaitGroup
+		//
+		// wg.Go(func() {
+		// 	// 模拟任务
+		// 	fmt.Println("Task 1")
+		// })
+		//
+		// wg.Go(func() {
+		// 	// 模拟任务
+		// 	fmt.Println("Task 2")
+		// })
+		//
+		// if err := wg.WaitAndRecover(); err != nil {
+		// 	fmt.Println("Error occurred:", err)
+		// }
+
+		res := concs.SingleFlight("key", func() interface{} {
+			return "result"
+		})
+		fmt.Println(res)
 	},
-}
-
-func startTheThing(wg *conc.WaitGroup) {
-	wg.Go(func() {
-		fmt.Println("Starting Thing...")
-	})
-}
-
-// func process(values []int)  {
-// 	iter.ForEach(values, func)
-// }
-
-func mapStream(
-	in chan int,
-	out chan int,
-	f func(int) int,
-) {
-	s := stream.New().WithMaxGoroutines(10)
-	for elem := range in {
-		elem := elem
-		s.Go(func() stream.Callback {
-			res := f(elem)
-			return func() { out <- res }
-		})
-	}
-	s.Wait()
-}
-
-// 用conc实现多线程轮流打印
-func p() {
-	const (
-		numGoroutines = 4
-		totalPrints   = 100
-	)
-
-	// 创建一个channel用于控制打印顺序
-	ch := make(chan int, 1)
-	wg := conc.NewWaitGroup()
-
-	// 创建4个协程
-	for i := 0; i < numGoroutines; i++ {
-		id := i + 1
-		wg.Go(func() {
-			for j := id; j <= totalPrints; j += numGoroutines {
-				// 等待轮到自己的回合
-				current := <-ch
-				if current%numGoroutines+1 == id {
-					fmt.Println(id)
-					time.Sleep(time.Second)
-					// 通知下一个协程
-					ch <- current + 1
-				}
-			}
-		})
-	}
-
-	// 启动第一次打印
-	ch <- 0
-
-	// 等待所有协程完成
-	wg.Wait()
 }
 
 func init() {
