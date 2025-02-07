@@ -136,4 +136,40 @@ func TestBeforeNowFormat(t *testing.T) {
 
 		carbon.Now().AddMinutes(10).DiffInSeconds()
 	})
+
+	t.Run("", func(t *testing.T) {
+
+		date := "2025-01-18"
+		parsedDate := carbon.ParseByLayout(date, "2006-01-02")
+		fmt.Println(parsedDate)
+
+		parsedDate2 := carbon.ParseByFormat(date, "yyyy-MM-dd")
+		fmt.Println(parsedDate2)
+
+		fmt.Println(subYear("2020-01-01"))
+		fmt.Println(subDays("2020-01-01", 20))
+	})
+
+}
+
+// subYear 为了处理同比数据
+// func subYear(d string) string {
+// 	return subDays(d, carbon.DaysPerNormalYear)
+// }
+//
+// // subDays
+// func subDays(d string, days int) string {
+// 	return carbon.ParseByLayout(d, "yyyy-MM-dd").SubDays(days).String()
+// }
+
+// subYear 为了处理同比数据
+func subYear(d string) string {
+	parsedDate := carbon.ParseByLayout(d, "2006-01-02")
+	return parsedDate.SubYears(1).Format("2006-01-02")
+}
+
+// subDays 减去指定的天数
+func subDays(d string, days int) string {
+	parsedDate := carbon.ParseByLayout(d, "2006-01-02")
+	return parsedDate.SubDays(days).Format("2006-01-02")
 }
