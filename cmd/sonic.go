@@ -24,7 +24,7 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("sonic called")
 
-		m := map[string]interface{}{
+		m := map[string]any{
 			"name": "z3",
 			"age":  20,
 		}
@@ -37,7 +37,7 @@ to quickly create a Cobra application.`,
 		fmt.Printf("json: %+v\n", string(byt))
 
 		// sonic反序列化
-		um := make(map[string]interface{})
+		um := make(map[string]any)
 		err = sonic.Unmarshal(byt, &um)
 		if err != nil {
 			log.Println(err)

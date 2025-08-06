@@ -3,7 +3,7 @@ package gq
 import (
 	"fmt"
 	query "github.com/PuerkitoBio/goquery"
-	"github.com/gogf/gf/net/ghttp"
+	"github.com/gogf/gf/v2/net/ghttp"
 	"net/http"
 )
 

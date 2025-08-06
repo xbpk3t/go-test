@@ -151,7 +151,7 @@ func z() {
 // [Go json 反序列化 interface{}对 int64 处理 | Daryl's Blog](https://darylliu.github.io/archives/a7f0b68f.html)
 func v() {
 	request := `{"id":7044144249855934983,"name":"demo"}`
-	var test interface{}
+	var test any
 	decoder := json.NewDecoder(strings.NewReader(request))
 	decoder.UseNumber()
 

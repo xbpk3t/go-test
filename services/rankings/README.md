@@ -57,4 +57,3 @@ weight 的影响因子有 送礼金额、送礼时间、用户等级
 [skiplist/skiplist.go at master · refine1017/skiplist](https://github.com/refine1017/skiplist/blob/master/skiplist.go)
 
 [sirius2alpha/scoreboard: 使用Redis在服务器上对用户的点击数排序，并返回排行榜](https://github.com/sirius2alpha/scoreboard)
-

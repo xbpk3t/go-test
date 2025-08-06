@@ -135,11 +135,11 @@ func calc(left, right string, operator string) string {
 	return TransToString(val)
 }
 
-func TransToString(data interface{}) (res string) {
+func TransToString(data any) (res string) {
 	val := reflect.ValueOf(data)
 	return strconv.FormatInt(val.Int(), 10)
 }
 
-func TransToInt(data interface{}) (res int, err error) {
+func TransToInt(data any) (res int, err error) {
 	return strconv.Atoi(strings.TrimSpace(data.(string)))
 }

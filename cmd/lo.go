@@ -36,6 +36,13 @@ to quickly create a Cobra application.`,
 		//
 		// dump.Println(lo.Uniq([]int{1, 2, 2, 1}))
 
+		nums := []int{1, 6, 3, 8}
+
+		result := lo.Filter(nums, func(n int, _ int) bool {
+			return n > 5
+		})
+		fmt.Println(result)
+
 	},
 }
 

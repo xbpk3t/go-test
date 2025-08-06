@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/panjf2000/ants"
+	"github.com/panjf2000/ants/v2"
 	"sync"
 
 	"github.com/spf13/cobra"
@@ -55,7 +55,7 @@ func (t *Task) Do() {
 	t.wg.Done()
 }
 
-func taskFunc(data interface{}) {
+func taskFunc(data any) {
 	task := data.(*Task)
 	task.Do()
 	fmt.Printf("task:%d sum:%d\n", task.index, task.sum)

@@ -59,12 +59,12 @@ func init() {
 
 func ConvertSliceOfMapToSliceOfStruct() []User {
 	// 这是原始的用户信息，存储在map的切片中
-	usersMap := []map[string]interface{}{
+	usersMap := []map[string]any{
 		{
 			"Name":  "John Doe",
 			"Age":   28,
 			"Email": "john.doe@example.com",
-			"Address": map[string]interface{}{
+			"Address": map[string]any{
 				"Street": "123 Elm St",
 				"City":   "Metropolis",
 				"Zip":    "12345",
@@ -74,7 +74,7 @@ func ConvertSliceOfMapToSliceOfStruct() []User {
 			"Name":  "Jane Smith",
 			"Age":   32,
 			"Email": "jane.smith@example.com",
-			"Address": map[string]interface{}{
+			"Address": map[string]any{
 				"Street": "456 Oak St",
 				"City":   "Smalltown",
 				"Zip":    "67890",
@@ -88,7 +88,7 @@ func ConvertSliceOfMapToSliceOfStruct() []User {
 		var user User
 
 		// 将Address部分的map单独解码到Address结构体
-		if addrMap, ok := userMap["Address"].(map[string]interface{}); ok {
+		if addrMap, ok := userMap["Address"].(map[string]any); ok {
 			mapstructure.Decode(addrMap, &user.Address)
 		}
 
@@ -107,11 +107,11 @@ func ConvertSliceOfMapToSliceOfStruct() []User {
 
 func ConvertMapToStruct() User {
 	// 这是原始的用户信息，存储在map中
-	userMap := map[string]interface{}{
+	userMap := map[string]any{
 		"Name":  "John Doe",
 		"Age":   28,
 		"Email": "john.doe@example.com",
-		"Address": map[string]interface{}{
+		"Address": map[string]any{
 			"Street": "123 Elm St",
 			"City":   "Metropolis",
 			"Zip":    "12345",

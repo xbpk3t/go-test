@@ -1,3 +1,5 @@
+---
+
 # [Configuration | golangci-lint](https://golangci-lint.run/usage/configuration/)
 linters:
   disable-all: true
@@ -41,7 +43,7 @@ linters:
     - exhaustivestruct # 检查struct的字段是否都已初始化
     - gochecknoinits # 检查init函数
     - noctx # [sonatard/noctx: noctx finds sending http request without context.Context.](https://github.com/sonatard/noctx)
-
+    - sloglint # [go-simpler/sloglint: 🪵 Ensure consistent code style when using log/slog](https://github.com/go-simpler/sloglint)
 
   # don't enable:
   # - asciicheck
