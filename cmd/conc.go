@@ -5,8 +5,9 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"test/pkg/concs"
+
+	"github.com/spf13/cobra"
 )
 
 // concCmd represents the conc command

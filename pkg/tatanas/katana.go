@@ -1,6 +1,7 @@
 package tatanas
 
 import (
+	"log/slog"
 	"math"
 
 	"github.com/projectdiscovery/gologger"
@@ -39,4 +40,6 @@ func main() {
 	if err != nil {
 		gologger.Warning().Msgf("Could not crawl %s: %s", input, err.Error())
 	}
+
+	slog.Error("")
 }

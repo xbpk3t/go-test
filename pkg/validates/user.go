@@ -1,8 +1,9 @@
 package validates
 
 import (
-	"github.com/gookit/validate"
 	"time"
+
+	"github.com/gookit/validate"
 )
 
 // UserForm struct
@@ -14,6 +15,7 @@ type UserForm struct {
 	CreateAt int       `validate:"min:1"`
 	UpdateAt time.Time `validate:"required"`
 	Code     string    `validate:"customValidator"` // 使用自定义验证器
+	Prefix   string    `validate:"required|regex:^\\d{4,6}$"`
 	// 结构体嵌套
 	ExtInfo struct {
 		Homepage string `validate:"required"`
@@ -53,5 +55,6 @@ func (f UserForm) Translates() map[string]string {
 		"Name":             "用户名称",
 		"Email":            "用户邮箱",
 		"ExtInfo.Homepage": "用户主页",
+		"Prefix":           "前缀test",
 	}
 }
