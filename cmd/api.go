@@ -5,22 +5,35 @@ package cmd
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/spf13/cobra"
+	"test/services/api"
 )
 
 // apiCmd represents the api command
 var apiCmd = &cobra.Command{
 	Use:   "api",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Start the API server",
+	Long: `Start the API server with filtering, sorting, and field selection capabilities.
+The server will listen on localhost:8080 by default.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("api called")
+		// Initialize the database
+		if err := api.InitDB(); err != nil {
+			fmt.Printf("Failed to initialize database: %v\n", err)
+			return
+		}
+
+		// Register example endpoints
+		http.HandleFunc("/api/examples", api.Handle(api.ExampleHandler))
+		http.HandleFunc("/api/examples/", api.Handle(api.GetSampleHandler))
+		http.HandleFunc("/api/examples/create", api.Handle(api.CreateSampleHandler))
+
+		// Start the server
+		fmt.Println("API server starting on :8080")
+		if err := http.ListenAndServe(":8080", nil); err != nil {
+			fmt.Printf("Server failed to start: %v\n", err)
+		}
 	},
 }
 
